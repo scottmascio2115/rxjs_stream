@@ -16,7 +16,7 @@ var sanFrancisco = [ '-122.75', '36.8', '-121.75', '37.8' ]
 
 var stream = T.stream('statuses/filter', { locations: sanFrancisco });
 
-var source = Rx.Node.fromStream(stream, 'end');
+var source =  Rx.Observable.fromEvent(stream, 'tweet');
 
 var observer = Rx.Observer.create(
     function (tweet) {
